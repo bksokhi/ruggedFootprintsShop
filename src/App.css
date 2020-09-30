@@ -100,7 +100,7 @@ main {
   margin-right: 0;
 }
 
-button {
+.gallery button {
   padding: 0;
   border: 0;
   background-color: #222222;
@@ -128,6 +128,19 @@ button {
   margin-bottom: 10px;
 }
 
-.shoppingCart li img {
-  width: 100px;
+.shoppingCart li img,
+.photoInfo {
+  width: 50%;
+}
+
+
+footer {
+  background: #111111;
+  padding: 10px;
+  color: #828282;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 10px;
+  text-align: center;
+  
 }

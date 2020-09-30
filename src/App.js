@@ -33,7 +33,6 @@ export class App extends Component {
       this.setState({
         gallery: newState,
       });
-      console.log(newState);
     });
   }
 
@@ -48,10 +47,20 @@ export class App extends Component {
     });
   }
 
+// remove function for shopping cart list
+  handleRemove = mapIndex => {
+    const cartList = [...this.state.cart];
+    const updatedCart = cartList.filter((item, i) => i !== mapIndex);
+    this.setState({
+      cart: updatedCart,
+    })
+  }
+
   
   render() {
     return (
       <div className="App">
+        {/* header */}
         <header>
           <nav>
             <div className="wrapper nav">
@@ -63,7 +72,7 @@ export class App extends Component {
                 </li>
               </ul>
               <a href="https://www.instagram.com/ruggedfootprints/">
-                <i class="fab fa-instagram"></i>{" "}
+                <i className="fab fa-instagram"></i>{" "}
               </a>
             </div>
           </nav>
@@ -80,10 +89,13 @@ export class App extends Component {
           </div>
         </header>
 
+      {/* main */}
         <main className="wrapper">
+          {/* photo gallery */}
           <ul className="gallery">
             {this.state.gallery.map((galleryObject) => {
               return (
+                // prints available counter
                 <Stock
                   galleryObject={galleryObject}
                   cartList={() => this.cartList(galleryObject)}
@@ -92,13 +104,14 @@ export class App extends Component {
             })}
           </ul>
 
+            {/* shopping cart item counter */}
           {this.state.cart.length > 0 ? (
             <div className="shoppingCart">
               <h3>Shopping Cart</h3>
-         
-              <p><i class="fas fa-shopping-cart"></i>{this.state.cart.length}</p>
+              <p><i className="fas fa-shopping-cart"></i>{this.state.cart.length}</p>
 
-              {this.state.cart.map((cartItem) => {
+            {/* importing selected gallery items into shopping cart list */}
+              {this.state.cart.map((cartItem, mapIndex) => {
                 return (
                   <li>
                     <img src={cartItem.data.image} alt={cartItem.data.title} />
@@ -106,14 +119,27 @@ export class App extends Component {
                       <h5>{cartItem.data.title}</h5> {/*title*/}
                       <p>Price: {cartItem.data.price}</p> {/*price*/}
                     </div>
+
+                    {/* remove button to remove items from shopping list */}
+                      <button className="trash" onClick={() => this.handleRemove(mapIndex)} >
+                          <i className="fas fa-trash"></i>
+                      </button>
+                      
                   </li>
                 );
               })}
+              
+              <button>Submit Order</button>
             </div>
           ) : (
             <p className="placeHolder"></p>
-          )}
+            )}
         </main>
+
+        <footer>
+          <p>Original Photographs by Sakib.I - Rugged // Footprints</p>
+          <p>Created by Baljit Sokhi at Juno College</p>
+        </footer>
       </div>
     );}
 }
