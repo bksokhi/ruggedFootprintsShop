@@ -42,8 +42,17 @@ export class App extends Component {
     const galleryItems = [...this.state.cart];
     galleryItems.push(galleryObject);
 
+    let total = 0
+    
+    galleryItems.map((priceItem) => {
+      let number = parseFloat(priceItem.data.price.replace('$',''))
+      total = total + number
+    })
+    
+  
     this.setState({
       cart: galleryItems,
+      totalPrice: '$'+total.toFixed(2),
     });
   }
 
@@ -58,90 +67,110 @@ export class App extends Component {
 
   
   render() {
-    return (
-      <div className="App">
-        {/* header */}
-        <header>
-          <nav>
-            <div className="wrapper nav">
-              <ul>
-                <li>
-                  <a href="https://www.ruggedfootprints.com/category/travel/">
-                    // Travel Blog
-                  </a>
-                </li>
-              </ul>
-              <a href="https://www.instagram.com/ruggedfootprints/">
-                <i className="fab fa-instagram"></i>{" "}
-              </a>
-            </div>
-          </nav>
-
-          <div className="heroContainer wrapper">
-            <h1>Rugged // Footprints Shop</h1>
-            <h2>Photography by Sakib I.</h2>
-            <p>
-              Mid-20s, currently lives in Silicon Valley, California but raised
-              in Scarborough/Toronto, ON, Canada. By occupation is a hardware
-              engineer. Avid traveller, advocate of health & fitness,
-              photography noobie.
-            </p>
-          </div>
-        </header>
-
-      {/* main */}
-        <main className="wrapper">
-          {/* photo gallery */}
-          <ul className="gallery">
-            {this.state.gallery.map((galleryObject) => {
-              return (
-                // prints available counter
-                <Stock
-                  galleryObject={galleryObject}
-                  cartList={() => this.cartList(galleryObject)}
-                />
-              );
-            })}
-          </ul>
-
-            {/* shopping cart item counter */}
-          {this.state.cart.length > 0 ? (
-            <div className="shoppingCart">
-              <h3>Shopping Cart</h3>
-              <p><i className="fas fa-shopping-cart"></i>{this.state.cart.length}</p>
-
-            {/* importing selected gallery items into shopping cart list */}
-              {this.state.cart.map((cartItem, mapIndex) => {
-                return (
+    
+      return (
+        <div className="App">
+          {/* header */}
+          <header>
+            <nav>
+              <div className="wrapper nav">
+                <ul>
                   <li>
-                    <img src={cartItem.data.image} alt={cartItem.data.title} />
-                    <div className="photoInfo">
-                      <h5>{cartItem.data.title}</h5> {/*title*/}
-                      <p>Price: {cartItem.data.price}</p> {/*price*/}
-                    </div>
-
-                    {/* remove button to remove items from shopping list */}
-                      <button className="trash" onClick={() => this.handleRemove(mapIndex)} >
-                          <i className="fas fa-trash"></i>
-                      </button>
-                      
+                    <a href="https://www.ruggedfootprints.com/category/travel/">
+                      // Travel Blog
+                    </a>
                   </li>
+                </ul>
+
+                <div className="rightNav">
+                  <a href="https://www.instagram.com/ruggedfootprints/">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                <i className="fas fa-shopping-cart"></i>
+                </div>
+                
+              </div>
+            </nav>
+
+            <div className="heroContainer wrapper">
+              <h1>Rugged // Footprints Shop</h1>
+              <h2>Photography by Sakib I.</h2>
+              <p>
+                Mid-20s, currently lives in Silicon Valley, California but
+                raised in Scarborough/Toronto, ON, Canada. By occupation is a
+                hardware engineer. Avid traveller, advocate of health & fitness,
+                photography noobie.
+              </p>
+            </div>
+          </header>
+
+          {/* main */}
+          <main className="wrapper">
+            {/* photo gallery */}
+            <ul className="gallery">
+              {this.state.gallery.map((galleryObject) => {
+                return (
+                  // prints available counter
+                  <Stock
+                    galleryObject={galleryObject}
+                    cartList={() => this.cartList(galleryObject)}
+                    printsSelected={
+                      this.state.cart.filter((cartItem) => {
+                        return cartItem.data.title === galleryObject.data.title;
+                      }).length
+                    }
+                  />
                 );
               })}
-              
-              <button>Submit Order</button>
-            </div>
-          ) : (
-            <p className="placeHolder"></p>
-            )}
-        </main>
+            </ul>
 
-        <footer>
-          <p>Original Photographs by Sakib.I - Rugged // Footprints</p>
-          <p>Created by Baljit Sokhi at Juno College</p>
-        </footer>
-      </div>
-    );}
+            {/* shopping cart item counter */}
+            {this.state.cart.length > 0 ? (
+              <div className="shoppingCart">
+                <h3>Shopping Cart</h3>
+                <p>
+                  <i className="fas fa-shopping-cart"></i>
+                  {this.state.cart.length}
+                </p>
+
+                {/* importing selected gallery items into shopping cart list */}
+                {this.state.cart.map((cartItem, mapIndex) => {
+                  return (
+                    <li>
+                      <img
+                        src={cartItem.data.image}
+                        alt={cartItem.data.title}
+                      />
+                      <div className="photoInfo">
+                        <h5>{cartItem.data.title}</h5> {/*title*/}
+                        <p>Price:{cartItem.data.price}</p> {/*price*/}
+                      </div>
+
+                      {/* remove button to remove items from shopping list */}
+                      <button
+                        className="trash"
+                        onClick={() => this.handleRemove(mapIndex)}
+                      >
+                        <i className="fas fa-trash"></i>
+                      </button>
+                    </li>
+                  );
+                })}
+
+                <button>Submit Order</button>
+                <p>Total Price {this.state.totalPrice}</p>
+              </div>
+            ) : (
+              <p className="placeHolder"></p>
+            )}
+          </main>
+
+          <footer>
+            <p>Original Photographs by Sakib.I - Rugged // Footprints</p>
+            <p>Created by Baljit Sokhi at Juno College</p>
+          </footer>
+        </div>
+      );}
 }
 
 
