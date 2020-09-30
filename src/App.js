@@ -51,49 +51,71 @@ export class App extends Component {
   
   render() {
     return (
-      <div className="App" className="wrapper">
+      <div className="App">
         <header>
-        <h1>Rugged // Footprints Shop</h1>
-          
-        </header>
-        
-        <ul className="gallery">
-          {this.state.gallery.map((galleryObject) => {
-            
-            return (
-              <Stock galleryObject = {galleryObject} cartList = {() => this.cartList(galleryObject)} />
-            );
-          })}
-        </ul>
-        
-        {this.state.cart.length > 0 ?
-          (
-          <div className="shoppingCart">
-              <h3>Shopping Cart</h3>
-              <p>You have {this.state.cart.length} items in your cart.</p>
-              {this.state.cart.map((cartItem) => {
-            return (
-            <li>
-              <img src={cartItem.data.image} alt={cartItem.data.title} />
-              <div className="photoInfo">
-                <h5>{cartItem.data.title}</h5> {/*title*/}
-                <p>Price: {cartItem.data.price}</p> {/*price*/}
-              </div>
+          <nav>
+            <div className="wrapper nav">
+              <ul>
+                <li>
+                  <a href="https://www.ruggedfootprints.com/category/travel/">
+                    // Travel Blog
+                  </a>
+                </li>
+              </ul>
+              <a href="https://www.instagram.com/ruggedfootprints/">
+                <i class="fab fa-instagram"></i>{" "}
+              </a>
+            </div>
+          </nav>
 
-              </li>
-            )
-              })}
+          <div className="heroContainer wrapper">
+            <h1>Rugged // Footprints Shop</h1>
+            <h2>Photography by Sakib I.</h2>
+            <p>
+              Mid-20s, currently lives in Silicon Valley, California but raised
+              in Scarborough/Toronto, ON, Canada. By occupation is a hardware
+              engineer. Avid traveller, advocate of health & fitness,
+              photography noobie.
+            </p>
           </div>
-          )
-          :
-          <p className="placeHolder">empty cart</p>
-        }
+        </header>
 
+        <main className="wrapper">
+          <ul className="gallery">
+            {this.state.gallery.map((galleryObject) => {
+              return (
+                <Stock
+                  galleryObject={galleryObject}
+                  cartList={() => this.cartList(galleryObject)}
+                />
+              );
+            })}
+          </ul>
 
-        
+          {this.state.cart.length > 0 ? (
+            <div className="shoppingCart">
+              <h3>Shopping Cart</h3>
+         
+              <p><i class="fas fa-shopping-cart"></i>{this.state.cart.length}</p>
+
+              {this.state.cart.map((cartItem) => {
+                return (
+                  <li>
+                    <img src={cartItem.data.image} alt={cartItem.data.title} />
+                    <div className="photoInfo">
+                      <h5>{cartItem.data.title}</h5> {/*title*/}
+                      <p>Price: {cartItem.data.price}</p> {/*price*/}
+                    </div>
+                  </li>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="placeHolder"></p>
+          )}
+        </main>
       </div>
-    
-    )}
+    );}
 }
 
 
