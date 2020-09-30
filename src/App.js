@@ -70,7 +70,7 @@ export class App extends Component {
           (
           <div className="shoppingCart">
               <h3>Shopping Cart</h3>
-              <p>You have {this.state.cart.length} items.</p>
+              <p>You have {this.state.cart.length} items in your cart.</p>
               {this.state.cart.map((cartItem) => {
             return (
             <li>
@@ -86,7 +86,7 @@ export class App extends Component {
           </div>
           )
           :
-          <p>empty cart</p>
+          <p className="placeHolder">empty cart</p>
         }
 
 
