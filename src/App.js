@@ -65,6 +65,16 @@ export class App extends Component {
     })
   }
 
+  // code used from example: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav
+  openCart = () => {
+    document.getElementById("shoppingCart").style.width = "300px";
+    document.getElementById("shoppingCart").style.padding = "20px";
+  }
+
+  closeCart = () => {
+    document.getElementById("shoppingCart").style.width = "0";
+    document.getElementById("shoppingCart").style.padding = "0";
+  }
   
   render() {
     
@@ -85,8 +95,10 @@ export class App extends Component {
                 <div className="rightNav">
                   <a href="https://www.instagram.com/ruggedfootprints/">
                     <i className="fab fa-instagram"></i>
+                    
                   </a>
-                <i className="fas fa-shopping-cart"></i>
+                  <i onClick={this.openCart} className="fas fa-shopping-cart"></i>
+                  <p>{this.state.cart.length}</p> 
                 </div>
                 
               </div>
@@ -125,13 +137,21 @@ export class App extends Component {
             </ul>
 
             {/* shopping cart item counter */}
-            {this.state.cart.length > 0 ? (
-              <div className="shoppingCart">
-                <h3>Shopping Cart</h3>
-                <p>
-                  <i className="fas fa-shopping-cart"></i>
-                  {this.state.cart.length}
-                </p>
+            {this.state.cart.length >= 0 ? (
+              <div id="shoppingCart" className="shoppingCart">
+                <div className="cartTitle">
+                  <h3>Shopping Cart</h3>
+
+                  {/* cart counter */}
+                  <p>
+                    <i className="fas fa-shopping-cart"></i>
+                    {this.state.cart.length}
+                  </p>
+
+                  {/* cart close button */}
+                  <i onClick={this.closeCart} className="far fa-window-close closeButton"></i>
+                </div>
+                
 
                 {/* importing selected gallery items into shopping cart list */}
                 {this.state.cart.map((cartItem, mapIndex) => {
@@ -157,8 +177,9 @@ export class App extends Component {
                   );
                 })}
 
-                <button>Submit Order</button>
                 <p>Total Price {this.state.totalPrice}</p>
+
+                <button>Submit Order</button>
               </div>
             ) : (
               <p className="placeHolder"></p>

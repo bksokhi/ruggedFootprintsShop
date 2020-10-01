@@ -1,3 +1,5 @@
+/* index.css */
+
 /* # - background */
 /* #111111 - banner */
 /* #828282 - light header */
@@ -37,7 +39,7 @@ li {
 nav {
   background: #111111;
   color: #828282;
-  font-size: 20px;
+  font-size: 20px; 
 }
 
 .nav,
@@ -47,8 +49,28 @@ nav ul {
   align-items: center;
 }
 
-.rightNav i {
-   margin-left: 15px;
+.rightNav {
+  display: flex;
+  align-items: center;
+}
+
+.rightNav i{
+  margin-left: 10px;
+}
+
+/* nav bar counter style */
+.rightNav p {
+  margin-left: 1px;
+  margin-top: -10px;
+  color: black;
+  background: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .rightNav i:hover{
@@ -117,7 +139,7 @@ main {
 /* shopping cart menu */
 .shoppingCart {
   height: 75%;
-  width: 300px;
+  width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -126,8 +148,29 @@ main {
   overflow-x: hidden;
   overflow-y: scroll;
   transition: 0.5s;
-  padding: 20px;
+  padding: 0;
   color: black;
+  
+}
+
+.cartTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  font-size: 25px;
+  margin-top: -60px;
+  color: #828282;
+}
+
+.closeButton:hover {
+  color: black;
+}
+
+.cartTitle p {
+  margin-left: 10px;
 }
 
 .shoppingCart li {
@@ -141,6 +184,7 @@ main {
   width: 50%;
 }
 
+/* footer */
 
 footer {
   background: #111111;
