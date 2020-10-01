@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d81fce6037358e0ad751c78c609fafbb",
+    "revision": "5782a136f5e7af50c7b2444223bd967b",
     "url": "/ruggedFootprintsShop/index.html"
   },
   {
-    "revision": "56fed2b63cd38a81dbb2",
-    "url": "/ruggedFootprintsShop/static/css/main.5d9e292f.chunk.css"
+    "revision": "99315f2c93f00d8e6061",
+    "url": "/ruggedFootprintsShop/static/css/main.360a01df.chunk.css"
   },
   {
     "revision": "f1e5713c173f58e6e54a",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ruggedFootprintsShop/static/js/2.035e6876.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "56fed2b63cd38a81dbb2",
-    "url": "/ruggedFootprintsShop/static/js/main.d9ca26ce.chunk.js"
+    "revision": "99315f2c93f00d8e6061",
+    "url": "/ruggedFootprintsShop/static/js/main.3b135b67.chunk.js"
   },
   {
     "revision": "b924501d0023945e9bbb",

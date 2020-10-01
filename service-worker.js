@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ruggedFootprintsShop/precache-manifest.ce7f069ad141688309171fc73c735617.js"
+  "/ruggedFootprintsShop/precache-manifest.b22b7ec49b54f519115bf0604274b779.js"
 );
 
 self.addEventListener('message', (event) => {
