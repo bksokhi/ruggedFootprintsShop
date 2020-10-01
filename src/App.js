@@ -67,7 +67,7 @@ export class App extends Component {
 
   // code used from example: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav
   openCart = () => {
-    document.getElementById("shoppingCart").style.width = "300px";
+    document.getElementById("shoppingCart").style.width = "250px";
     document.getElementById("shoppingCart").style.padding = "20px";
   }
 
@@ -144,8 +144,8 @@ export class App extends Component {
 
                   {/* cart counter */}
                   <p>
-                    <i className="fas fa-shopping-cart"></i>
                     {this.state.cart.length}
+                    <i className="fas fa-shopping-cart"></i>
                   </p>
 
                   {/* cart close button */}
@@ -187,8 +187,8 @@ export class App extends Component {
           </main>
 
           <footer>
-            <p>Original Photographs by Sakib.I - Rugged // Footprints</p>
-            <p>Created by Baljit Sokhi at Juno College</p>
+            <p>Original Photographs by Sakib.I - <a href="https://www.ruggedfootprints.com/category/travel/">Rugged // Footprints</a></p>
+            <p>Created by <a href="https://github.com/bksokhi">Baljit Sokhi</a> at Juno College</p>
           </footer>
         </div>
       );}
