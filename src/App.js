@@ -93,14 +93,21 @@ export class App extends Component {
                   </li>
                 </ul>
 
-              {/* items on right side of nav bar */}
+                {/* items on right side of nav bar */}
                 <div className="rightNav">
                   <a href="https://www.instagram.com/ruggedfootprints/">
-                    <i aria-label="link to instagram" className="fab fa-instagram"></i>
+                    <i
+                      aria-label="link to instagram"
+                      className="fab fa-instagram"
+                    ></i>
                   </a>
-                  <i aria-label="open shopping cart" onClick={this.openCart} className="fas fa-shopping-cart"></i>
+                  <i
+                    aria-label="open shopping cart"
+                    onClick={this.openCart}
+                    className="fas fa-shopping-cart"
+                  ></i>
                   {/* counting how many items in cart */}
-                  <p>{this.state.cart.length}</p> 
+                  <p>{this.state.cart.length}</p>
                 </div>
               </div>
             </nav>
@@ -114,7 +121,9 @@ export class App extends Component {
                 hardware engineer. Avid traveller, advocate of health & fitness,
                 photography noobie.
               </p>
-              <p className="select">~ Place your order by selecting the images below. ~</p>
+              <p className="select">
+                ~ Place your order by selecting the images below. ~
+              </p>
             </div>
           </header>
 
@@ -148,13 +157,19 @@ export class App extends Component {
                   {/* cart counter */}
                   <p>
                     {this.state.cart.length}
-                    <i aria-label="items in shopping cart" className="fas fa-shopping-cart"></i>
+                    <i
+                      aria-label="items in shopping cart"
+                      className="fas fa-shopping-cart"
+                    ></i>
                   </p>
 
                   {/* cart close button */}
-                  <i aria-label="close shopping cart" onClick={this.closeCart} className="far fa-window-close closeButton"></i>
+                  <i
+                    aria-label="close shopping cart"
+                    onClick={this.closeCart}
+                    className="far fa-window-close closeButton"
+                  ></i>
                 </div>
-                
 
                 {/* importing selected gallery items into shopping cart list */}
                 {this.state.cart.map((cartItem, mapIndex) => {
@@ -174,7 +189,10 @@ export class App extends Component {
                         className="trash"
                         onClick={() => this.handleRemove(mapIndex)}
                       >
-                        <i aria-label="remove item" className="fas fa-trash"></i>
+                        <i
+                          aria-label="remove item"
+                          className="fas fa-trash"
+                        ></i>
                       </button>
                     </li>
                   );
@@ -184,15 +202,22 @@ export class App extends Component {
 
                 <button>Submit Order</button>
               </div>
-            )
-              :(
+            ) : (
               <p className="placeHolder"></p>
-              )}
+            )}
           </main>
 
           <footer>
-            <p>Original Photographs by Sakib.I - <a href="https://www.ruggedfootprints.com/category/travel/">Rugged // Footprints</a></p>
-            <p>Created by <a href="https://github.com/bksokhi">Baljit Sokhi</a> at Juno College</p>
+            <p>
+              Original Photographs by Sakib.I -{" "}
+              <a href="https://www.ruggedfootprints.com/category/travel/">
+                Rugged // Footprints
+              </a>
+            </p>
+            <p>
+              Created by <a href="https://github.com/bksokhi">Baljit Sokhi</a> at
+              <a href="https://junocollege.com/">Juno College</a>
+            </p>
           </footer>
         </div>
       );}
