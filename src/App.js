@@ -36,27 +36,27 @@ export class App extends Component {
     });
   }
 
-// update cart list
+///////// update shopping cart list /////////
   cartList = galleryObject => {
     // created new array 
     const galleryItems = [...this.state.cart];
     galleryItems.push(galleryObject);
 
+    // adding total price of items together in shopping cart //
+    // converting string to number
     let total = 0
-    
     galleryItems.map((priceItem) => {
       let number = parseFloat(priceItem.data.price.replace('$',''))
       total = total + number
     })
-    
-  
+    // setting total price to 2 decimal place
     this.setState({
       cart: galleryItems,
       totalPrice: '$'+total.toFixed(2),
     });
   }
 
-// remove function for shopping cart list
+///////// remove function to remove items from shopping cart list ///////////
   handleRemove = mapIndex => {
     const cartList = [...this.state.cart];
     const updatedCart = cartList.filter((item, i) => i !== mapIndex);
@@ -65,10 +65,11 @@ export class App extends Component {
     })
   }
 
-  // code used from example: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav
+///////// open and close shopping cart menu /////////
+  // code used from example: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav //
   openCart = () => {
-    document.getElementById("shoppingCart").style.width = "250px";
-    document.getElementById("shoppingCart").style.padding = "20px";
+    document.getElementById("shoppingCart").style.width = "245px";
+    document.getElementById("shoppingCart").style.padding = "25px";
   }
 
   closeCart = () => {
@@ -77,11 +78,11 @@ export class App extends Component {
   }
   
   render() {
-    
       return (
         <div className="App">
           {/* header */}
           <header>
+            {/* navigation bar */}
             <nav>
               <div className="wrapper nav">
                 <ul>
@@ -92,15 +93,15 @@ export class App extends Component {
                   </li>
                 </ul>
 
+              {/* items on right side of nav bar */}
                 <div className="rightNav">
                   <a href="https://www.instagram.com/ruggedfootprints/">
-                    <i className="fab fa-instagram"></i>
-                    
+                    <i aria-label="link to instagram" className="fab fa-instagram"></i>
                   </a>
-                  <i onClick={this.openCart} className="fas fa-shopping-cart"></i>
+                  <i aria-label="open shopping cart" onClick={this.openCart} className="fas fa-shopping-cart"></i>
+                  {/* counting how many items in cart */}
                   <p>{this.state.cart.length}</p> 
                 </div>
-                
               </div>
             </nav>
 
@@ -113,6 +114,7 @@ export class App extends Component {
                 hardware engineer. Avid traveller, advocate of health & fitness,
                 photography noobie.
               </p>
+              <p className="select">~ Place your order by selecting the images below. ~</p>
             </div>
           </header>
 
@@ -122,7 +124,7 @@ export class App extends Component {
             <ul className="gallery">
               {this.state.gallery.map((galleryObject) => {
                 return (
-                  // prints available counter
+                  // prints available counter //
                   <Stock
                     galleryObject={galleryObject}
                     cartList={() => this.cartList(galleryObject)}
@@ -136,7 +138,8 @@ export class App extends Component {
               })}
             </ul>
 
-            {/* shopping cart item counter */}
+            {/* shopping cart menu and item counter */}
+            {/* show shopping cart menu if items are selected */}
             {this.state.cart.length >= 0 ? (
               <div id="shoppingCart" className="shoppingCart">
                 <div className="cartTitle">
@@ -145,11 +148,11 @@ export class App extends Component {
                   {/* cart counter */}
                   <p>
                     {this.state.cart.length}
-                    <i className="fas fa-shopping-cart"></i>
+                    <i aria-label="items in shopping cart" className="fas fa-shopping-cart"></i>
                   </p>
 
                   {/* cart close button */}
-                  <i onClick={this.closeCart} className="far fa-window-close closeButton"></i>
+                  <i aria-label="close shopping cart" onClick={this.closeCart} className="far fa-window-close closeButton"></i>
                 </div>
                 
 
@@ -171,7 +174,7 @@ export class App extends Component {
                         className="trash"
                         onClick={() => this.handleRemove(mapIndex)}
                       >
-                        <i className="fas fa-trash"></i>
+                        <i aria-label="remove item" className="fas fa-trash"></i>
                       </button>
                     </li>
                   );
@@ -181,9 +184,10 @@ export class App extends Component {
 
                 <button>Submit Order</button>
               </div>
-            ) : (
+            )
+              :(
               <p className="placeHolder"></p>
-            )}
+              )}
           </main>
 
           <footer>
@@ -193,6 +197,5 @@ export class App extends Component {
         </div>
       );}
 }
-
 
 export default App;

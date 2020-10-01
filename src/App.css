@@ -1,12 +1,4 @@
-/* index.css */
-
-/* # - background */
-/* #111111 - banner */
-/* #828282 - light header */
-/* #4d4d4d- body text */
-/* font-family: 'Raleway', sans-serif; */
-
-/* general styling */
+/***** general styling *****/
 html {
   font-size: 62.5%;
 
@@ -127,6 +119,9 @@ header {
   font-size: 1.5rem;
 }
 
+.select {
+  margin-top: 50px;
+}
 
 
 /* main/gallery */
@@ -241,6 +236,9 @@ main {
   width: 50%;
 }
 
+.photoInfo {
+  margin-left: 5px;
+}
 .shoppingCart button {
   padding: 5px;
   background: #828282;
