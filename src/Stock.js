@@ -12,7 +12,7 @@ export class Stock extends Component {
         <li key={this.props.galleryObject.key}>
 
           <button onClick={this.handleCounter}>
-              <img src={this.props.galleryObject.data.image} alt="" />
+              <img src={this.props.galleryObject.data.image} alt={this.props.galleryObject.data.title} />
               <div className="overlay">
                 <p>Add to Cart</p>
               </div>
