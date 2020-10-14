@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ruggedFootprintsShop/static/css/main.360a01df.chunk.css",
-    "main.js": "/ruggedFootprintsShop/static/js/main.547ad150.chunk.js",
-    "main.js.map": "/ruggedFootprintsShop/static/js/main.547ad150.chunk.js.map",
+    "main.js": "/ruggedFootprintsShop/static/js/main.f686479b.chunk.js",
+    "main.js.map": "/ruggedFootprintsShop/static/js/main.f686479b.chunk.js.map",
     "runtime-main.js": "/ruggedFootprintsShop/static/js/runtime-main.ae94bedd.js",
     "runtime-main.js.map": "/ruggedFootprintsShop/static/js/runtime-main.ae94bedd.js.map",
     "static/js/2.035e6876.chunk.js": "/ruggedFootprintsShop/static/js/2.035e6876.chunk.js",
     "static/js/2.035e6876.chunk.js.map": "/ruggedFootprintsShop/static/js/2.035e6876.chunk.js.map",
     "index.html": "/ruggedFootprintsShop/index.html",
-    "precache-manifest.2800ffb5c92ffc750d68aabec489c7f3.js": "/ruggedFootprintsShop/precache-manifest.2800ffb5c92ffc750d68aabec489c7f3.js",
+    "precache-manifest.ada44dcb024e86e56344798f3cf077d2.js": "/ruggedFootprintsShop/precache-manifest.ada44dcb024e86e56344798f3cf077d2.js",
     "service-worker.js": "/ruggedFootprintsShop/service-worker.js",
     "static/css/main.360a01df.chunk.css.map": "/ruggedFootprintsShop/static/css/main.360a01df.chunk.css.map",
     "static/js/2.035e6876.chunk.js.LICENSE.txt": "/ruggedFootprintsShop/static/js/2.035e6876.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ae94bedd.js",
     "static/js/2.035e6876.chunk.js",
     "static/css/main.360a01df.chunk.css",
-    "static/js/main.547ad150.chunk.js"
+    "static/js/main.f686479b.chunk.js"
   ]
 }
