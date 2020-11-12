@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useReducer } from 'react';
 import firebase from './firebase.js';
 import './App.css';
 import Stock from './Stock.js';
@@ -11,6 +11,7 @@ export class App extends Component {
     this.state = {
       gallery: [],
       cart: [],
+      totalPrice: 0,
     }
   }
 
@@ -36,18 +37,27 @@ export class App extends Component {
     });
   }
 
+  
 ///////// update shopping cart list /////////
   cartList = galleryObject => {
     // created new array 
     const galleryItems = [...this.state.cart];
     galleryItems.push(galleryObject);
-
+    
     // adding total price of items together in shopping cart //
-    // converting string to number
     let total = 0
     galleryItems.map((priceItem) => {
-      let number = parseFloat(priceItem.data.price.replace('$',''))
-      total = total + number
+      // converting string to number
+      let number = parseFloat(priceItem.data.price.replace('$', ''))
+      const total = number.reduce((acc, cur) => {
+        return acc + cur;
+      })
+
+      if (number.length > 0) {
+        return total
+      }
+      // total = total + number
+   
     })
     // setting total price to 2 decimal place
     this.setState({
@@ -60,6 +70,7 @@ export class App extends Component {
   handleRemove = mapIndex => {
     const cartList = [...this.state.cart];
     const updatedCart = cartList.filter((item, i) => i !== mapIndex);
+
     this.setState({
       cart: updatedCart,
     })
@@ -69,6 +80,7 @@ export class App extends Component {
   // code used from example: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sidenav //
   openCart = () => {
     document.getElementById("shoppingCart").style.width = "245px";
+    document.getElementById("shoppingCart").style.height = "100%";
     document.getElementById("shoppingCart").style.padding = "25px";
   }
 
