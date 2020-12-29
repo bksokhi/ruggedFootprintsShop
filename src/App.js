@@ -37,6 +37,7 @@ export class App extends Component {
     });
   }
 
+
   
 ///////// update shopping cart list /////////
   cartList = galleryObject => {
@@ -49,20 +50,14 @@ export class App extends Component {
     galleryItems.map((priceItem) => {
       // converting string to number
       let number = parseFloat(priceItem.data.price.replace('$', ''))
-      const total = number.reduce((acc, cur) => {
-        return acc + cur;
+    
+      total = total + number
       })
 
-      if (number.length > 0) {
-        return total
-      }
-      // total = total + number
-   
-    })
     // setting total price to 2 decimal place
     this.setState({
       cart: galleryItems,
-      totalPrice: '$'+total.toFixed(2),
+      totalPrice: total.toFixed(2),
     });
   }
 
@@ -70,9 +65,14 @@ export class App extends Component {
   handleRemove = mapIndex => {
     const cartList = [...this.state.cart];
     const updatedCart = cartList.filter((item, i) => i !== mapIndex);
+    const itemToRemove = cartList[mapIndex];
+    // converting string to number
+    let number = parseFloat(itemToRemove.data.price.replace('$', ''))
+    console.log(number);
 
     this.setState({
       cart: updatedCart,
+      totalPrice: (this.state.totalPrice - number).toFixed(2),
     })
   }
 
@@ -210,7 +210,7 @@ export class App extends Component {
                   );
                 })}
 
-                <p>Total Price {this.state.totalPrice}</p>
+                <p>Total Price $ {this.state.totalPrice}</p>
 
                 <button>Submit Order</button>
               </div>
